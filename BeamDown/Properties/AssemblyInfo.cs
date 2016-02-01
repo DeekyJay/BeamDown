@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BeamStreamDown")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("BeamDown")]
+[assembly: AssemblyDescription("BeamDown - Download A Streamers Last Stream - By Leviathan5")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Leviathan5")]
-[assembly: AssemblyProduct("BeamStreamDown")]
-[assembly: AssemblyCopyright("Copyright Leviathan5 ©  2016")]
+[assembly: AssemblyProduct("BeamDown")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b08beb9d-f570-4880-b4b0-0614bb5a92f5")]
+[assembly: Guid("919f5b11-d7be-4f9b-bd90-77263f32adca")]
 
 // Version information for an assembly consists of the following four values:
 //
