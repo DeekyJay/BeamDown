@@ -6,6 +6,10 @@ using System.Diagnostics;
 using MetroFramework.Forms;
 using System.Threading;
 using MetroFramework;
+using System.Drawing;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace BeamDown
 {
@@ -17,6 +21,8 @@ namespace BeamDown
         private string file_url;
         private string v_url;
         private string p_url;
+        private string status;
+        private Color col;
 
         //Downloading Variables
         private WebClient web = new WebClient();
@@ -47,6 +53,7 @@ namespace BeamDown
             this.mlbPercent.Text = "";
             this.mlbTitleEdit.Text = "";
             this.mlbDateEdit.Text = "";
+            this.mlbStatus.Text = "";
 
             //Setup Background Worker for Timing
             bw.WorkerReportsProgress = true;
@@ -55,9 +62,10 @@ namespace BeamDown
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             bw.ProgressChanged += new ProgressChangedEventHandler(this.bw_ProgressChanged);
 
-            //Setup WebClient Events
+            //Setup WebClient
             web.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_downloadProgressChanged);
             web.DownloadFileCompleted += new AsyncCompletedEventHandler(client_downloadCompleted);
+            web.Encoding = Encoding.UTF8;
         }
 
         /// <summary>
@@ -153,42 +161,39 @@ namespace BeamDown
             {
                 json = web.DownloadString(url);
 
-                //Do some unpopular string splitting in order to find the channel id
-                //Chances of this breaking seem likely in the future
-                string[] arr = json.Split(':');
-                channelId = arr[1].Substring(0, arr[1].IndexOf(','));
+                JToken jt = JObject.Parse(json);
 
-                //Yet another gross loop to find the title and date of stream
-                //Chances of this breaking are even higher
-                bool name = false;
-                bool date = false;
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    if (arr[i].Contains("name") && !name)
-                    {
-                        string[] tempArr = arr[i + 1].Split(new char[] { '\\', '"' }, StringSplitOptions.None);
-                        this.mlbTitleEdit.Text = tempArr[1];
-                        name = true;
-                    }
-                    else if (arr[i].Contains("updatedAt") && !date)
-                    {
-                        string sdate = arr[i + 1].Substring(1);
-                        string minute = arr[i + 2];
-                        string sec = arr[i + 3].Substring(0, arr[i + 3].IndexOf(','));
-                        string final = sdate + ":" + minute + ":" + sec;
-                        this.mlbDateEdit.Text = final.Substring(0, final.Length - 1);
-                        date = true;
-                    }
-                }
+                this.channelId = (string) jt.SelectToken("id");
+                bool online = (bool)jt.SelectToken("online");
+                string name = (string)jt.SelectToken("name");
+                string date = (string)jt.SelectToken("updatedAt");
 
                 //Get the url of the video and the image to set as our preview
                 this.v_url = "https://dist-vod.beam.pro/dash/" + this.channelId + "/source.mp4";
-                this.p_url = "https://dist-vod.beam.pro/dash/" + this.channelId + "/source.jpg";
+
+                //If the user is live, get the thumbnail rather than the last stream picture
+                if (online)
+                {
+                    this.p_url = "https://thumbs.beam.pro/channel/" + this.channelId + ".small.jpg";
+                    this.status = "LIVE";
+                    this.col = Color.Green;
+                } 
+                else
+                {
+                    this.p_url = "https://dist-vod.beam.pro/dash/" + this.channelId + "/source.jpg";
+                    this.status = "OFFLINE";
+                    this.col = Color.Gray;
+                }
+                    
 
                 //Update the UI with the new info and allow them to download the video
                 this.mlbChannelEdit.Text = channelId;
+                this.mlbTitleEdit.Text = name;
+                this.mlbDateEdit.Text = date;
                 this.mbtnDownload.Enabled = true;
-                this.pbPreview.ImageLocation = p_url;   
+                this.pbPreview.ImageLocation = p_url;
+                this.mlbStatus.Text = status;
+                this.mlbStatus.ForeColor = col;
             }
             catch(WebException we)
             {
