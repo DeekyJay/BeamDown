@@ -72,6 +72,8 @@
             this.pbGit = new System.Windows.Forms.PictureBox();
             this.mlinkLeviathan = new MetroFramework.Controls.MetroLink();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.mlbStatus = new MetroFramework.Controls.MetroLabel();
+            this.mlbVersion = new MetroFramework.Controls.MetroLabel();
             this.table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msm)).BeginInit();
@@ -87,12 +89,16 @@
             // 
             // table
             // 
-            this.table.ColumnCount = 5;
+            this.table.ColumnCount = 8;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 480F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 354F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.table.Controls.Add(this.mlbStatus, 5, 0);
             this.table.Controls.Add(this.pbPreview, 4, 1);
             this.table.Controls.Add(this.mlbDateEdit, 1, 3);
             this.table.Controls.Add(this.mlbLastUpdated, 0, 3);
@@ -126,14 +132,13 @@
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.table.Size = new System.Drawing.Size(896, 334);
             this.table.TabIndex = 9;
@@ -142,6 +147,7 @@
             // 
             this.pbPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.table.SetColumnSpan(this.pbPreview, 2);
             this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbPreview.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbPreview.ErrorImage")));
             this.pbPreview.InitialImage = null;
@@ -231,7 +237,7 @@
             // 
             this.mlbPercent.AutoSize = true;
             this.mlbPercent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mlbPercent.Location = new System.Drawing.Point(110, 266);
+            this.mlbPercent.Location = new System.Drawing.Point(110, 261);
             this.mlbPercent.Margin = new System.Windows.Forms.Padding(0);
             this.mlbPercent.Name = "mlbPercent";
             this.mlbPercent.Size = new System.Drawing.Size(155, 19);
@@ -266,10 +272,10 @@
             // 
             this.mbtnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mbtnCancel.Enabled = false;
-            this.mbtnCancel.Location = new System.Drawing.Point(267, 139);
+            this.mbtnCancel.Location = new System.Drawing.Point(267, 140);
             this.mbtnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.mbtnCancel.Name = "mbtnCancel";
-            this.mbtnCancel.Size = new System.Drawing.Size(110, 26);
+            this.mbtnCancel.Size = new System.Drawing.Size(110, 24);
             this.mbtnCancel.TabIndex = 24;
             this.mbtnCancel.Text = "Cancel";
             this.mbtnCancel.UseSelectable = true;
@@ -280,10 +286,10 @@
             // 
             this.mbtnDownload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mbtnDownload.Enabled = false;
-            this.mbtnDownload.Location = new System.Drawing.Point(112, 139);
+            this.mbtnDownload.Location = new System.Drawing.Point(112, 140);
             this.mbtnDownload.Margin = new System.Windows.Forms.Padding(2);
             this.mbtnDownload.Name = "mbtnDownload";
-            this.mbtnDownload.Size = new System.Drawing.Size(151, 26);
+            this.mbtnDownload.Size = new System.Drawing.Size(151, 24);
             this.mbtnDownload.TabIndex = 22;
             this.mbtnDownload.Text = "Download";
             this.mbtnDownload.UseSelectable = true;
@@ -294,10 +300,10 @@
             // 
             this.mbtnPlay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mbtnPlay.Enabled = false;
-            this.mbtnPlay.Location = new System.Drawing.Point(22, 139);
+            this.mbtnPlay.Location = new System.Drawing.Point(22, 140);
             this.mbtnPlay.Margin = new System.Windows.Forms.Padding(2);
             this.mbtnPlay.Name = "mbtnPlay";
-            this.mbtnPlay.Size = new System.Drawing.Size(86, 26);
+            this.mbtnPlay.Size = new System.Drawing.Size(86, 24);
             this.mbtnPlay.TabIndex = 21;
             this.mbtnPlay.Text = "Play";
             this.mbtnPlay.UseSelectable = true;
@@ -309,10 +315,10 @@
             this.mlbProgress.AutoSize = true;
             this.mlbProgress.Dock = System.Windows.Forms.DockStyle.Right;
             this.mlbProgress.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlbProgress.Location = new System.Drawing.Point(43, 172);
+            this.mlbProgress.Location = new System.Drawing.Point(43, 171);
             this.mlbProgress.Margin = new System.Windows.Forms.Padding(5);
             this.mlbProgress.Name = "mlbProgress";
-            this.mlbProgress.Size = new System.Drawing.Size(62, 20);
+            this.mlbProgress.Size = new System.Drawing.Size(62, 21);
             this.mlbProgress.TabIndex = 15;
             this.mlbProgress.Text = "Progress";
             // 
@@ -320,10 +326,10 @@
             // 
             this.mlbProgressEdit.AutoSize = true;
             this.mlbProgressEdit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.mlbProgressEdit.Location = new System.Drawing.Point(115, 172);
+            this.mlbProgressEdit.Location = new System.Drawing.Point(115, 171);
             this.mlbProgressEdit.Margin = new System.Windows.Forms.Padding(5);
             this.mlbProgressEdit.Name = "mlbProgressEdit";
-            this.mlbProgressEdit.Size = new System.Drawing.Size(41, 20);
+            this.mlbProgressEdit.Size = new System.Drawing.Size(41, 21);
             this.mlbProgressEdit.TabIndex = 14;
             this.mlbProgressEdit.Text = "None";
             // 
@@ -453,7 +459,7 @@
             this.mpbDownload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mpbDownload.Location = new System.Drawing.Point(23, 230);
             this.mpbDownload.Name = "mpbDownload";
-            this.mpbDownload.Size = new System.Drawing.Size(353, 33);
+            this.mpbDownload.Size = new System.Drawing.Size(353, 28);
             this.mpbDownload.TabIndex = 10;
             // 
             // msm
@@ -508,42 +514,44 @@
             this.tableAbout.BackColor = System.Drawing.Color.Transparent;
             this.tableAbout.ColumnCount = 1;
             this.tableAbout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableAbout.Controls.Add(this.mlbVersion, 0, 2);
             this.tableAbout.Controls.Add(this.mbtnAboutBack, 0, 10);
-            this.tableAbout.Controls.Add(this.mlinkBastion, 0, 8);
-            this.tableAbout.Controls.Add(this.mlbStream, 0, 6);
-            this.tableAbout.Controls.Add(this.spltDevStream, 0, 5);
-            this.tableAbout.Controls.Add(this.mlbLeviathan, 0, 3);
-            this.tableAbout.Controls.Add(this.mlbDeveloper, 0, 2);
+            this.tableAbout.Controls.Add(this.mlinkBastion, 0, 9);
+            this.tableAbout.Controls.Add(this.mlbStream, 0, 7);
+            this.tableAbout.Controls.Add(this.spltDevStream, 0, 6);
+            this.tableAbout.Controls.Add(this.mlbLeviathan, 0, 4);
+            this.tableAbout.Controls.Add(this.mlbDeveloper, 0, 3);
             this.tableAbout.Controls.Add(this.spltAbout, 0, 1);
             this.tableAbout.Controls.Add(this.mlbAbout, 0, 0);
-            this.tableAbout.Controls.Add(this.pbGit, 0, 4);
-            this.tableAbout.Controls.Add(this.mlinkLeviathan, 0, 7);
+            this.tableAbout.Controls.Add(this.pbGit, 0, 5);
+            this.tableAbout.Controls.Add(this.mlinkLeviathan, 0, 8);
             this.tableAbout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableAbout.Location = new System.Drawing.Point(300, 5);
             this.tableAbout.Name = "tableAbout";
             this.tableAbout.RowCount = 12;
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableAbout.Size = new System.Drawing.Size(296, 324);
             this.tableAbout.TabIndex = 13;
             // 
             // mbtnAboutBack
             // 
             this.mbtnAboutBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mbtnAboutBack.Location = new System.Drawing.Point(100, 278);
+            this.mbtnAboutBack.Location = new System.Drawing.Point(100, 277);
             this.mbtnAboutBack.Margin = new System.Windows.Forms.Padding(100, 10, 100, 10);
             this.mbtnAboutBack.Name = "mbtnAboutBack";
-            this.mbtnAboutBack.Size = new System.Drawing.Size(96, 26);
+            this.mbtnAboutBack.Size = new System.Drawing.Size(96, 21);
             this.mbtnAboutBack.TabIndex = 29;
             this.mbtnAboutBack.Text = "Back";
             this.mbtnAboutBack.UseSelectable = true;
@@ -553,9 +561,9 @@
             // mlinkBastion
             // 
             this.mlinkBastion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mlinkBastion.Location = new System.Drawing.Point(3, 220);
+            this.mlinkBastion.Location = new System.Drawing.Point(3, 237);
             this.mlinkBastion.Name = "mlinkBastion";
-            this.mlinkBastion.Size = new System.Drawing.Size(290, 24);
+            this.mlinkBastion.Size = new System.Drawing.Size(290, 27);
             this.mlinkBastion.TabIndex = 28;
             this.mlinkBastion.Text = "Beam.Pro/BastionConquers";
             this.mlinkBastion.UseCustomBackColor = true;
@@ -568,7 +576,7 @@
             this.mlbStream.BackColor = System.Drawing.Color.Transparent;
             this.mlbStream.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mlbStream.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.mlbStream.Location = new System.Drawing.Point(3, 169);
+            this.mlbStream.Location = new System.Drawing.Point(3, 186);
             this.mlbStream.Name = "mlbStream";
             this.mlbStream.Size = new System.Drawing.Size(290, 18);
             this.mlbStream.TabIndex = 26;
@@ -581,7 +589,7 @@
             this.spltDevStream.BackColor = System.Drawing.Color.DarkCyan;
             this.tableAbout.SetColumnSpan(this.spltDevStream, 3);
             this.spltDevStream.Dock = System.Windows.Forms.DockStyle.Top;
-            this.spltDevStream.Location = new System.Drawing.Point(40, 158);
+            this.spltDevStream.Location = new System.Drawing.Point(40, 171);
             this.spltDevStream.Margin = new System.Windows.Forms.Padding(40, 7, 40, 7);
             this.spltDevStream.Name = "spltDevStream";
             this.spltDevStream.Size = new System.Drawing.Size(216, 3);
@@ -593,9 +601,9 @@
             this.mlbLeviathan.AutoSize = true;
             this.mlbLeviathan.BackColor = System.Drawing.Color.Transparent;
             this.mlbLeviathan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mlbLeviathan.Location = new System.Drawing.Point(3, 86);
+            this.mlbLeviathan.Location = new System.Drawing.Point(3, 95);
             this.mlbLeviathan.Name = "mlbLeviathan";
-            this.mlbLeviathan.Size = new System.Drawing.Size(290, 26);
+            this.mlbLeviathan.Size = new System.Drawing.Size(290, 30);
             this.mlbLeviathan.TabIndex = 22;
             this.mlbLeviathan.Text = "Leviathan5";
             this.mlbLeviathan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -607,9 +615,9 @@
             this.mlbDeveloper.BackColor = System.Drawing.Color.Transparent;
             this.mlbDeveloper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mlbDeveloper.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.mlbDeveloper.Location = new System.Drawing.Point(3, 68);
+            this.mlbDeveloper.Location = new System.Drawing.Point(3, 75);
             this.mlbDeveloper.Name = "mlbDeveloper";
-            this.mlbDeveloper.Size = new System.Drawing.Size(290, 18);
+            this.mlbDeveloper.Size = new System.Drawing.Size(290, 20);
             this.mlbDeveloper.TabIndex = 14;
             this.mlbDeveloper.Text = "Developer";
             this.mlbDeveloper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -620,7 +628,7 @@
             this.spltAbout.BackColor = System.Drawing.Color.DarkCyan;
             this.tableAbout.SetColumnSpan(this.spltAbout, 3);
             this.spltAbout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.spltAbout.Location = new System.Drawing.Point(2, 57);
+            this.spltAbout.Location = new System.Drawing.Point(2, 42);
             this.spltAbout.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
             this.spltAbout.Name = "spltAbout";
             this.spltAbout.Size = new System.Drawing.Size(292, 3);
@@ -636,7 +644,7 @@
             this.mlbAbout.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.mlbAbout.Location = new System.Drawing.Point(3, 0);
             this.mlbAbout.Name = "mlbAbout";
-            this.mlbAbout.Size = new System.Drawing.Size(290, 50);
+            this.mlbAbout.Size = new System.Drawing.Size(290, 35);
             this.mlbAbout.TabIndex = 12;
             this.mlbAbout.Text = "About";
             this.mlbAbout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -647,7 +655,7 @@
             this.pbGit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pbGit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbGit.BackgroundImage")));
             this.pbGit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbGit.Location = new System.Drawing.Point(131, 115);
+            this.pbGit.Location = new System.Drawing.Point(131, 128);
             this.pbGit.Name = "pbGit";
             this.pbGit.Size = new System.Drawing.Size(33, 33);
             this.pbGit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -658,7 +666,7 @@
             // mlinkLeviathan
             // 
             this.mlinkLeviathan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mlinkLeviathan.Location = new System.Drawing.Point(3, 190);
+            this.mlinkLeviathan.Location = new System.Drawing.Point(3, 207);
             this.mlinkLeviathan.Name = "mlinkLeviathan";
             this.mlinkLeviathan.Size = new System.Drawing.Size(290, 24);
             this.mlinkLeviathan.TabIndex = 27;
@@ -677,6 +685,33 @@
             this.metroLabel1.Size = new System.Drawing.Size(99, 25);
             this.metroLabel1.TabIndex = 11;
             this.metroLabel1.Text = "Developer";
+            // 
+            // mlbStatus
+            // 
+            this.mlbStatus.AutoSize = true;
+            this.mlbStatus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.mlbStatus.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.mlbStatus.Location = new System.Drawing.Point(831, 0);
+            this.mlbStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.mlbStatus.Name = "mlbStatus";
+            this.mlbStatus.Size = new System.Drawing.Size(45, 30);
+            this.mlbStatus.TabIndex = 43;
+            this.mlbStatus.Text = "None";
+            this.mlbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mlbStatus.UseCustomForeColor = true;
+            // 
+            // mlbVersion
+            // 
+            this.mlbVersion.AutoSize = true;
+            this.mlbVersion.BackColor = System.Drawing.Color.Transparent;
+            this.mlbVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mlbVersion.Location = new System.Drawing.Point(3, 55);
+            this.mlbVersion.Name = "mlbVersion";
+            this.mlbVersion.Size = new System.Drawing.Size(290, 20);
+            this.mlbVersion.TabIndex = 30;
+            this.mlbVersion.Text = "v1.1.0";
+            this.mlbVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.mlbVersion.UseCustomBackColor = true;
             // 
             // MainForm
             // 
@@ -751,6 +786,8 @@
         private MetroFramework.Controls.MetroButton mbtnAboutBack;
         private System.Windows.Forms.PictureBox pbPreview;
         private MetroFramework.Controls.MetroLabel mlbPreview;
+        private MetroFramework.Controls.MetroLabel mlbStatus;
+        private MetroFramework.Controls.MetroLabel mlbVersion;
     }
 }
 
