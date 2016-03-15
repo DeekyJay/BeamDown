@@ -1,5 +1,6 @@
 # BeamDown
 Download A Streamer's Last Stream From Beam
+#### Like this project and want to support me? [Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z8UAZK3MYS6MA)
 
 ###Requirements
  * .NET Framework v3.5
